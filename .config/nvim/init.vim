@@ -81,9 +81,6 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 colorscheme tokyonight
 
-set guifont=Hack\ 12
-set encoding=utf8
-
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 let g:rustfmt_autosave = 1
