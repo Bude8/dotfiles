@@ -1,0 +1,30 @@
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[user]
+	name = Henry Lee
+	email = henry.lee@bidfx.com
+[core]
+	autocrlf = input
+	editor = nvim
+	# pager = delta
+[includeIf "gitdir/i:/mnt/c/Users/HenryLee/Documents/TSRepos/"]
+	path = .gitconfig-ts
+[push]
+	default = current
+[http]
+	postBuffer = 1048576000
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+		side-by-side = true
+		line-numbers = true
+    navigate = true  # use n and N to move between diff sections
+    light = false    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
