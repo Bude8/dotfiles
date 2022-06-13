@@ -215,7 +215,6 @@ alias ..='cd ..'
 alias d='docker'
 alias dc='docker-compose'
 alias f='flux'
-alias fd=fdfind
 alias fget='flux get'
 alias fgk='flux get kustomizations'
 alias fgs='flux get sources'
@@ -319,3 +318,5 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :50 {}'"
 
 export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
