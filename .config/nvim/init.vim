@@ -21,6 +21,7 @@ filetype plugin indent on
 
 call plug#begin()
 Plug 'rust-lang/rust.vim'
+Plug 'cappyzawa/trim.nvim'
 Plug 'puremourning/vimspector'
 Plug 'airblade/vim-rooter'
 Plug 'Raimondi/delimitMate'

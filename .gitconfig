@@ -6,7 +6,7 @@
 [core]
 	autocrlf = input
 	editor = nvim
-	# pager = delta
+	pager = delta
 [includeIf "gitdir/i:/mnt/c/Users/HenryLee/Documents/TSRepos/"]
 	path = .gitconfig-ts
 [push]
