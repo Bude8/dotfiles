@@ -105,4 +105,6 @@ let g:rustfmt_autosave = 1
  nnoremap <leader>dh :call vimspector#ToggleBreakpoint()<CR>
  nnoremap <leader>de :call vimspector#ToggleConditionalBreakpoint()<CR>
 
-
+" vim-better-whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
