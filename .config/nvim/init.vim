@@ -24,6 +24,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'puremourning/vimspector'
 Plug 'airblade/vim-rooter'
+Plug 'airblade/vim-gitgutter'
 Plug 'Raimondi/delimitMate'
 Plug 'dracula/vim'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -31,7 +32,6 @@ Plug 'ervandew/supertab'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'mpickering/hlint-refactor-vim'
 Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'preservim/nerdtree'
@@ -60,6 +60,7 @@ nnoremap <C-f> :FZF<CR>
 nnoremap <F4> :UndotreeToggle<CR>
 nnoremap <silent> <leader>o :Files<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
+nnoremap <M-Bslash> <C-^><CR>
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'one'
