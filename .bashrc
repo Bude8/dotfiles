@@ -44,7 +44,7 @@ esac
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
-# 
+#
 # if [ -n "$force_color_prompt" ]; then
 #     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 # 	# We have color support; assume it's compliant with Ecma-48
@@ -55,7 +55,7 @@ esac
 # 	color_prompt=
 #     fi
 # fi
-# 
+#
 # if [ "$color_prompt" = yes ]; then
 #     PS1='✦\W\[\033[00m\]\$ '
 # else
@@ -71,7 +71,7 @@ esac
 # *)
 #     ;;
 # esac
-# 
+#
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -184,7 +184,7 @@ export TF_CLI_ARGS_plan="-parallelism=100"
 export TF_CLI_ARGS_apply="-parallelism=100"
 export TF_LOG_PATH="$HOME/.terraform.d/terraform.log"
 export TF_LOG="TRACE"
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
@@ -255,6 +255,7 @@ alias validate="kubectl apply --validate=true --dry-run=client --filename"
 alias colordiff2="colordiff -yW`tput cols`"
 alias gke='gcloud container'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias kb='kustomize build'
 
 eval $(ssh-agent)
 export EDITOR="nvim"

@@ -22,7 +22,7 @@ filetype plugin indent on
 call plug#begin()
 Plug 'rust-lang/rust.vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'airblade/vim-rooter'
 Plug 'airblade/vim-gitgutter'
 Plug 'Raimondi/delimitMate'
@@ -61,6 +61,8 @@ nnoremap <F4> :UndotreeToggle<CR>
 nnoremap <silent> <leader>o :Files<CR>
 nnoremap <silent> <leader>rg :Rg<CR>
 nnoremap <M-Bslash> <C-^><CR>
+nnoremap <S-h> :bp<CR>
+nnoremap <S-l> :bn<CR>
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'one'
@@ -100,9 +102,9 @@ let g:rustfmt_autosave = 1
  nnoremap <leader>di :call AddToWatch()<CR>
  nnoremap <leader>dx :call vimspector#Reset()<CR>
  nnoremap <leader>dX :call vimspector#ClearBreakpoints()<CR>
- nnoremap <S-k> :call vimspector#StepOut()<CR>
- nnoremap <S-l> :call vimspector#StepInto()<CR>
- nnoremap <S-j> :call vimspector#StepOver()<CR>
+ " nnoremap <S-k> :call vimspector#StepOut()<CR>
+ " nnoremap <S-l> :call vimspector#StepInto()<CR>
+ " nnoremap <S-j> :call vimspector#StepOver()<CR>
  nnoremap <leader>d_ :call vimspector#Restart()<CR>
  nnoremap <leader>dn :call vimspector#Continue()<CR>
  nnoremap <leader>drc :call vimspector#RunToCursor()<CR>
