@@ -267,7 +267,7 @@ source <(kubectl completion bash)
 export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HOME/repos/BidFX/devops-scripts/kubernetes/scripts/:$HOME/repos/BidFX/devops-scripts/migration/helm-migration-scripts/:$HOME/.local/bin:$PATH:$HOME/repos/DevOps/k8s-gitops-dev/scripts/bin"
 
 # Zscaler
-export SSL_CERT_FILE="/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt"
+[[ -f "/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt" ]] && export SSL_CERT_FILE="/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt"
 
 . /usr/bin/z.sh
 /usr/bin/keychain --nogui ~/.ssh/id_rsa
