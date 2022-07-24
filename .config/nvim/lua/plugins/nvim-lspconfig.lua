@@ -91,20 +91,30 @@ local on_attach = function(client, bufnr)
 end
 
 --[[
+
 Language servers setup:
+
 For language servers list see:
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+
 Bash --> bashls
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#bashls
+
 Python --> pyright
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
+
 C-C++ --> clangd
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#clangd
+
 HTML/CSS/JSON --> vscode-html-languageserver
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#html
+
 JavaScript/TypeScript --> tsserver
 https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
+
 --]]
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.tsserver.setup{}
 
 -- Define `root_dir` when needed
 -- See: https://github.com/neovim/nvim-lspconfig/issues/320
