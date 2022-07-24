@@ -203,6 +203,7 @@ alias gd='git diff'
 alias gp='git push'
 alias gr='git restore'
 alias gfm='git pull'
+alias cdr='cd $(git rev-parse --show-toplevel)'
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 __git_complete g _git
 
