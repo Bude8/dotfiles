@@ -58,7 +58,6 @@ $spack\
 $memory_usage\
 $kubernetes\
 $aws\
-$gcloud\
 $openstack\
 $azure\
 $env_var\
@@ -75,7 +74,7 @@ $shell\
 $character"""
 
 [kubernetes]
-format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](cyan) '
+format = 'on [⛵ $context \($namespace\)](cyan) '
 disabled = false
 
 [gcloud]

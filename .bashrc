@@ -82,6 +82,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias ls='ls --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -263,7 +264,7 @@ export VIMRC='$HOME/.config/nvim/init.vim'
 source "$HOME/.cargo/env"
 source $HOME/.keychain/hlee-sh
 source <(kubectl completion bash)
-export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HOME/repos/BidFX/devops-scripts/kubernetes/scripts/:$HOME/repos/BidFX/devops-scripts/migration/helm-migration-scripts/:$HOME/.local/bin:$PATH:$HOME/repos/GitHub/diff-so-fancy"
+export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HOME/repos/BidFX/devops-scripts/kubernetes/scripts/:$HOME/repos/BidFX/devops-scripts/migration/helm-migration-scripts/:$HOME/.local/bin:$PATH:$HOME/repos/DevOps/k8s-gitops-dev/scripts/bin"
 
 # Zscaler
 export SSL_CERT_FILE="/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt"
@@ -321,3 +322,4 @@ export FZF_ALT_C_COMMAND='fd --type d . --color=never --hidden'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source <(yq shell-completion bash)
