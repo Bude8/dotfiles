@@ -264,7 +264,7 @@ table.insert(components.active[2], comps.diagnos.hint)
 table.insert(components.active[2], comps.diagnos.info)
 table.insert(components.active[2], comps.lsp.name)
 table.insert(components.active[2], comps.file.type)
-table.insert(components.active[2], comps.file.os)
+-- table.insert(components.active[2], comps.file.os)
 table.insert(components.active[2], comps.file.position)
 table.insert(components.active[2], comps.file.line_percentage)
 
