@@ -25,3 +25,6 @@ nvim_treesitter.setup {
     enable = true,
   },
 }
+
+-- nvim-ts-autotag
+require('nvim-ts-autotag').setup()

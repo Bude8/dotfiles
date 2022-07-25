@@ -125,6 +125,9 @@ return packer.startup(function(use)
   -- bufferline
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
+  -- nvim-ts-autotag
+  use 'windwp/nvim-ts-autotag'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

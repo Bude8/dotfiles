@@ -115,6 +115,12 @@ https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.m
 --]]
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.tsserver.setup{}
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+require'lspconfig'.html.setup {
+  capabilities = capabilities,
+}
 
 -- Define `root_dir` when needed
 -- See: https://github.com/neovim/nvim-lspconfig/issues/320
