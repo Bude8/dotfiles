@@ -56,6 +56,7 @@ map('n', '<leader>r', ':so %<CR>')
 
 -- Fast saving with <leader> and s/w
 map('n', '<leader>s', ':w<CR>')
+map('n', '<leader>w', ':w<CR>')
 -----------------------------------------------------------
 -- Define keymaps of Neovim and installed plugins.
 -----------------------------------------------------------
