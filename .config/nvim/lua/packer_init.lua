@@ -67,6 +67,7 @@ return packer.startup(function(use)
 
   -- -- Treesitter interface
   use 'nvim-treesitter/nvim-treesitter'
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   -- LSP
   use 'neovim/nvim-lspconfig'
