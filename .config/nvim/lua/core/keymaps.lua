@@ -13,11 +13,15 @@ end
 -- Change leader to a space
 vim.g.mapleader = ' '
 
+
 -----------------------------------------------------------
 -- Neovim shortcuts
 -----------------------------------------------------------
 -- Unmap <C-z>
 map('', '<C-z>', '<nop>')
+
+-- Paste hack
+map('', '<leader>p', '\"_dP')
 
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>c', ':noh<CR>')
