@@ -31,7 +31,7 @@ set $menu wofi --show=drun --lines=5 --prompt=""
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/bude/Pictures/Wallpapers/silhouette_deer.jpg fill
 #
 # Example configuration:
 #
@@ -218,6 +218,9 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+bindsym $mod+greater move workspace to output right
+bindsym $mod+less move workspace to output left
 
 #
 # Status Bar:

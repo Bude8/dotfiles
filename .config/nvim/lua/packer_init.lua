@@ -129,6 +129,18 @@ return packer.startup(function(use)
   -- nvim-ts-autotag
   use 'windwp/nvim-ts-autotag'
 
+  -- go
+  use 'ray-x/go.nvim'
+  use 'ray-x/guihua.lua' -- recommanded if need floating window support
+
+  -- rust
+  use 'rust-lang/rust.vim'
+  use 'rhysd/rust-doc.vim'
+  use 'simrat39/rust-tools.nvim'
+-- Debugging
+  use 'nvim-lua/plenary.nvim'
+  use 'mfussenegger/nvim-dap'
+
   -- todo-comments
 -- Lua
   use {
