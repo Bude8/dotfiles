@@ -22,6 +22,9 @@ map('', '<C-z>', '<nop>')
 -- Paste hack
 map('', '<leader>p', '\"_dP')
 
+map('', '<C-d>', '<C-d>zz')
+map('', '<C-u>', '<C-u>zz')
+
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>c', ':noh<CR>')
 
