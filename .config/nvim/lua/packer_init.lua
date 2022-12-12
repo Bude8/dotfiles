@@ -113,11 +113,20 @@ return packer.startup(function(use)
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
 
+  -- nvim-surround
+  use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
+
   -- tpope
   use 'tpope/vim-commentary'
-  use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
-  use 'tpope/vim-repeat'
   use 'tpope/vim-unimpaired'
 
   -- vim-rooter
