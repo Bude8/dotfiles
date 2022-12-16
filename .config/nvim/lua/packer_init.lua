@@ -70,7 +70,11 @@ return packer.startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-context'
 
   -- LSP
-  use 'neovim/nvim-lspconfig'
+  use {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
+  }
 
   -- Autocomplete
   use {

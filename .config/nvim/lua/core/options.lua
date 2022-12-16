@@ -40,6 +40,22 @@ opt.tabstop = 4             -- 1 tab == 4 spaces
 -- opt.smartindent = true      -- Autoindent new lines
 
 -----------------------------------------------------------
+-- Primagen
+-----------------------------------------------------------
+-- Search
+opt.hlsearch = true
+opt.incsearch = true
+
+-- Save to disk
+opt.updatetime = 50
+
+-- Undodir
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
+
+-----------------------------------------------------------
 -- Startup
 -----------------------------------------------------------
 -- Disable nvim intro

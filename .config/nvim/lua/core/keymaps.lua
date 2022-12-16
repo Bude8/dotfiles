@@ -19,12 +19,6 @@ vim.g.mapleader = ' '
 -- Unmap <C-z>
 map('', '<C-z>', '<nop>')
 
--- Paste hack
-map('', '<leader>p', '\"_dP')
-
-map('', '<C-d>', '<C-d>zz')
-map('', '<C-u>', '<C-u>zz')
-
 -- Clear search highlighting with <leader> and c
 map('n', '<leader>c', ':noh<CR>')
 
@@ -61,11 +55,44 @@ map('n', '<M-Bslash>', '<C-^><CR>')
 map('n', '<leader>r', ':so %<CR>')
 
 -- Fast saving with <leader> and s/w
-map('n', '<leader>s', ':w<CR>')
 map('n', '<leader>w', ':w<CR>')
 
 -- Close all windows and exit from Neovim with <leader> and q
 map('n', '<leader>q', ':qa!<CR>')
+
+-----------------------------------------------------------
+-- Primagen
+-----------------------------------------------------------
+
+-- Move lines around in visual mode
+map('v', 'J', ":m '>+1<CR>gv=gv")
+map('v', 'K', ":m '<-2<CR>gv=gv")
+map('v', '<S-Up>', ":m '<-2<CR>gv=gv")
+map('v', '<S-Down>', ":m '>+1<CR>gv=gv")
+
+-- Keep cursor centred
+map('', '<C-d>', '<C-d>zz')
+map('', '<C-u>', '<C-u>zz')
+
+-- J to keep cursor in same place
+map('n', 'J', 'mzJ`z')
+
+-- Search terms to stay in the middle
+map('n', 'n', 'nzzzv')
+map('n', 'N', 'Nzzzv')
+
+-- Paste hack - keep current paste buffer
+map('x', '<leader>p', '\"_dP')
+map('n', '<leader>d', '\"_d')
+map('v', '<leader>d', '\"_d')
+
+-- Use system clipboard
+map('n', '<leader>y', '\"+y')
+map('v', '<leader>y', '\"+y')
+map('n', '<leader>Y', '\"+Y')
+
+-- Replace word cursor is on
+map('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
