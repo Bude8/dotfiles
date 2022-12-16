@@ -42,7 +42,7 @@ end
 
 -- Install plugins
 return packer.startup(function(use)
-  -- Add you plugins here:
+  -- Add your plugins here:
   use 'wbthomason/packer.nvim' -- packer can manage itself
 
   -- File explorer
@@ -146,9 +146,13 @@ return packer.startup(function(use)
   use 'rust-lang/rust.vim'
   use 'rhysd/rust-doc.vim'
   use 'simrat39/rust-tools.nvim'
--- Debugging
+
+  -- Debugging
   use 'nvim-lua/plenary.nvim'
   use 'mfussenegger/nvim-dap'
+
+  -- Undotree
+  use 'mbbill/undotree'
 
   -- todo-comments
 -- Lua
