@@ -9,6 +9,8 @@
 local g = vim.g       -- Global variables
 local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 
+vim.g.copilot_assume_mapped = true
+
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------

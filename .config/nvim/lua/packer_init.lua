@@ -169,20 +169,20 @@ return packer.startup(function(use)
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
-        panel = { enabled = false },
-        suggestion = { enabled = false },
+        panel = { auto_refresh = true },
+        suggestion = { auto_trigger = true },
         filetypes = { yaml = true }
       })
     end,
   }
 
-  use {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function ()
-      require("copilot_cmp").setup()
-    end
-  }
+  -- use {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua" },
+  --   config = function ()
+  --     require("copilot_cmp").setup()
+  --   end
+  -- }
 
   -- todo-comments
   use {

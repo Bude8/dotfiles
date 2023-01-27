@@ -109,3 +109,14 @@ map('n', '<leader>rg', ':Rg<CR>')
 
 -- Undotree
 map('n', '<F4>', ':UndotreeToggle<CR>')
+
+-- Copilot
+vim.keymap.set("i", '<Tab>', function()
+  if require("copilot.suggestion").is_visible() then
+    require("copilot.suggestion").accept()
+  else
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+  end
+end, {
+  silent = true,
+})
