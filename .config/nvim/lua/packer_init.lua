@@ -81,6 +81,7 @@ return packer.startup(function(use)
     'hrsh7th/nvim-cmp',
     requires = {
       'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
@@ -160,6 +161,28 @@ return packer.startup(function(use)
 
   -- Multi
   use 'mg979/vim-visual-multi'
+
+  -- GitHub Copilot
+  use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        panel = { enabled = false },
+        suggestion = { enabled = false },
+        filetypes = { yaml = true }
+      })
+    end,
+  }
+
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  }
 
   -- todo-comments
   use {
