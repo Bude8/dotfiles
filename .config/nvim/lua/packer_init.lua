@@ -158,8 +158,10 @@ return packer.startup(function(use)
   -- Undotree
   use 'mbbill/undotree'
 
+  -- Multi
+  use 'mg979/vim-visual-multi'
+
   -- todo-comments
--- Lua
   use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
