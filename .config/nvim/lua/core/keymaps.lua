@@ -103,9 +103,9 @@ map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
 map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
 map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
 
--- FZF
-map('n', '<C-f>', ':FZF<CR>')
-map('n', '<leader>rg', ':Rg<CR>')
+-- -- FZF
+-- map('n', '<C-f>', ':FZF<CR>')
+-- map('n', '<leader>rg', ':Rg<CR>')
 
 -- Undotree
 map('n', '<F4>', ':UndotreeToggle<CR>')

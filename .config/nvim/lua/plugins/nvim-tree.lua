@@ -22,9 +22,9 @@ nvim_tree.setup {
   --disable_netrw = false, -> already disabled on `/core/options.lua`
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
-  ignore_buffer_on_setup = false,
-  open_on_setup = false,
-  open_on_setup_file = false,
+  -- ignore_buffer_on_setup = false,
+  -- open_on_setup = false,
+  -- open_on_setup_file = false,
   open_on_tab = false,
   sort_by = "name",
   reload_on_bufenter = false,
@@ -106,7 +106,7 @@ nvim_tree.setup {
     update_cwd = true,
     ignore_list = {},
   },
-  ignore_ft_on_setup = {},
+  -- ignore_ft_on_setup = {},
   system_open = {
     cmd = "",
     args = {},

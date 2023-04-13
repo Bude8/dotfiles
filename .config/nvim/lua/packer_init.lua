@@ -114,9 +114,17 @@ return packer.startup(function(use)
   -- Colour schemes
   use 'folke/tokyonight.nvim'
 
-  -- FZF
-  use 'junegunn/fzf'
-  use 'junegunn/fzf.vim'
+  -- -- FZF
+  -- use 'junegunn/fzf'
+  -- use 'junegunn/fzf.vim'
+
+  -- Telescope
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+  -- or                            , branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  use("desdic/telescope-rooter.nvim")
 
   -- nvim-surround
   use({
@@ -134,8 +142,17 @@ return packer.startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-unimpaired'
 
-  -- vim-rooter
-  use 'airblade/vim-rooter'
+  -- Lua
+  use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
   -- bufferline
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
@@ -147,10 +164,10 @@ return packer.startup(function(use)
   use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua' -- recommanded if need floating window support
 
-  -- rust
-  use 'rust-lang/rust.vim'
-  use 'rhysd/rust-doc.vim'
-  use 'simrat39/rust-tools.nvim'
+  -- -- rust
+  -- use 'rust-lang/rust.vim'
+  -- use 'rhysd/rust-doc.vim'
+  -- use 'simrat39/rust-tools.nvim'
 
   -- Debugging
   use 'nvim-lua/plenary.nvim'
@@ -162,19 +179,19 @@ return packer.startup(function(use)
   -- Multi
   use 'mg979/vim-visual-multi'
 
-  -- GitHub Copilot
-  use {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        panel = { auto_refresh = true },
-        suggestion = { auto_trigger = true },
-        filetypes = { yaml = true }
-      })
-    end,
-  }
+  -- -- GitHub Copilot
+  -- use {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup({
+  --       panel = { auto_refresh = true },
+  --       suggestion = { auto_trigger = true },
+  --       filetypes = { yaml = true }
+  --     })
+  --   end,
+  -- }
 
   -- use {
   --   "zbirenbaum/copilot-cmp",
