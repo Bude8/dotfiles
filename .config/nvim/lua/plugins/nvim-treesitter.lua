@@ -26,6 +26,8 @@ nvim_treesitter.setup {
   },
 }
 
+vim.api.nvim_command('autocmd BufNewFile,BufRead *.tfvars set filetype=tf')
+
 -- nvim-ts-autotag
 require('nvim-ts-autotag').setup()
 require'treesitter-context'.setup{
