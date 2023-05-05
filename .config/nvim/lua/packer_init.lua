@@ -114,16 +114,16 @@ return packer.startup(function(use)
   -- Colour schemes
   use 'folke/tokyonight.nvim'
 
-  -- -- FZF
-  -- use 'junegunn/fzf'
-  -- use 'junegunn/fzf.vim'
+  -- FZF
+  use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
 
-  -- Telescope
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-  -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  -- -- Telescope
+  -- use {
+  --   'nvim-telescope/telescope.nvim', tag = '0.1.1',
+  -- -- or                            , branch = '0.1.x',
+  --   requires = { {'nvim-lua/plenary.nvim'} }
+  -- }
 
   -- nvim-surround
   use({
