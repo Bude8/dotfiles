@@ -99,7 +99,7 @@ map('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 -----------------------------------------------------------
 
 -- NvimTree
-map('n', '<C-m>', ':NvimTreeToggle<CR>')            -- open/close
+map('n', '<F5>', ':NvimTreeToggle<CR>')            -- open/close
 map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
 map('n', '<leader>m', ':NvimTreeFindFile<CR>')      -- search file
 
