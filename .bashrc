@@ -175,8 +175,12 @@ function replace {
     grep --exclude-dir=".git;.svn" -rl "$1"| xargs sed -i "s/$1/$2/g"
 }
 
-function pretty_csv {
+function pretty-csv {
     column -t -s, -n "$@" | less -F -S -X -K
+}
+
+function activate-poetry {
+    source $(poetry env info --path)/bin/activate
 }
 
 # Terraform Speedup + Store Logs
@@ -253,12 +257,16 @@ alias resetindextomaster='git reset $(git merge-base master $(git branch --show-
 #alias javalogs="rainbow -y 'ERROR.*' --red='WARN.*' --green='INFO.*' -m 'DEBUG.*' --config=java-stack-trace"
 #alias -g jlogs="| rainbow -y 'ERROR.*' --red='WARN.*' --green='INFO.*' -m 'DEBUG.*' --config=java-stack-trace"
 alias javalogs="rainbow -y '(error|ERROR).*' --red='(warn|WARN).*' --green='(info|INFO).*' -m '(debug|DEBUG).*' --config=java-stack-trace"
-alias jlogs="| rainbow -y '(error|ERROR|Error).*' --red='(warn|WARN|Warn).*' --green='(info|INFO|Info).*' -m '(debug|DEBUG|Debug).*' --config=java-stack-trace"
+# alias jlogs="| rainbow -y '(error|ERROR|Error).*' --red='(warn|WARN|Warn).*' --green='(info|INFO|Info).*' -m '(debug|DEBUG|Debug).*' --config=java-stack-trace"
 alias validate="kubectl apply --validate=true --dry-run=client --filename"
 alias colordiff2="colordiff -yW`tput cols`"
 alias gke='gcloud container'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias kb='kustomize build'
+
+jlogs() {
+  rainbow -y '(error|ERROR|Error).*' --red='(warn|WARN|Warn).*' --green='(info|INFO|Info).*' -m '(debug|DEBUG|Debug).*' --config=java-stack-trace
+}
 
 eval $(ssh-agent)
 export EDITOR="nvim"
@@ -266,7 +274,7 @@ export VIMRC='$HOME/.config/nvim/init.vim'
 source "$HOME/.cargo/env"
 source $HOME/.keychain/hlee-sh
 source <(kubectl completion bash)
-export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HOME/repos/BidFX/devops-scripts/kubernetes/scripts/:$HOME/repos/BidFX/devops-scripts/migration/helm-migration-scripts/:$HOME/.local/bin:$PATH:$HOME/repos/DevOps/k8s-gitops-dev/scripts/bin"
+export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HOME/repos/DevOps/devops-scripts/kubernetes/scripts/:$HOME/repos/DevOps/devops-scripts/migration/helm-migration-scripts/:$HOME/.local/bin:$PATH:$HOME/repos/DevOps/k8s-gitops-dev/scripts/bin"
 
 # Zscaler
 [[ -f "/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt" ]] && export SSL_CERT_FILE="/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt"
@@ -325,3 +333,6 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -50'"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 source <(yq shell-completion bash)
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
