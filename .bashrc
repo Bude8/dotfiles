@@ -203,6 +203,7 @@ alias gs='git switch'
 alias ga='git add'
 alias gcm='git commit -m'
 alias gco='git checkout'
+alias gcod='git checkout origin/diff/$(git rev-parse --abbrev-ref HEAD)'
 alias gd='git diff'
 alias gdn='git diff --no-ext-diff'
 alias gp='git push'
@@ -336,3 +337,5 @@ source <(yq shell-completion bash)
 
 # add Pulumi to the PATH
 export PATH=$PATH:$HOME/.pulumi/bin
+
+export KUBECTL_EXTERNAL_DIFF="$HOME/bin/kdiff.sh"
