@@ -125,6 +125,11 @@ return packer.startup(function(use)
   --   requires = { {'nvim-lua/plenary.nvim'} }
   -- }
 
+  -- use { 'ibhagwan/fzf-lua',
+  --   -- optional for icon support
+  --   requires = { 'nvim-tree/nvim-web-devicons' }
+  -- }
+
   -- nvim-surround
   use({
       "kylechui/nvim-surround",
@@ -141,17 +146,27 @@ return packer.startup(function(use)
   use 'tpope/vim-fugitive'
   use 'tpope/vim-unimpaired'
 
-  -- Lua
-  use {
-    "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
+  -- vim-rooter
+  -- Would like to swap to a lua version for FZF and rooter but these work better for now
+  use 'airblade/vim-rooter'
+
+  -- -- nvim-rooter.lua
+  -- use {
+  --     'notjedi/nvim-rooter.lua',
+  --     config = function() require'nvim-rooter'.setup() end
+  -- }
+
+  -- -- project
+  -- use {
+  --   "ahmedkhalf/project.nvim",
+  --   config = function()
+  --     require("project_nvim").setup {
+  --       -- your configuration comes here
+  --       -- or leave it empty to use the default settings
+  --       -- refer to the configuration section below
+  --     }
+  --   end
+  -- }
 
   -- bufferline
   use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
