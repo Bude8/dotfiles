@@ -142,10 +142,17 @@ return packer.startup(function(use)
   })
 
   -- tpope
-  use 'tpope/vim-commentary'
+  -- use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-unimpaired'
 
+  -- Comment.nvim
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
   -- vim-rooter
   -- Would like to swap to a lua version for FZF and rooter but these work better for now
   use 'airblade/vim-rooter'

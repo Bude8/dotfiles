@@ -139,6 +139,7 @@ local root_dir = function()
 end
 
 require'lspconfig'.gopls.setup{}
+require'lspconfig'.regols.setup{}
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches.
