@@ -84,4 +84,4 @@ disabled = true
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
-disabled = false
+disabled = true

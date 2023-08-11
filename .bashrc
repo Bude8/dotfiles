@@ -155,6 +155,11 @@ alias ictl='istioctl'
 alias proxy-config='istioctl proxy-config'
 alias proxy-status='istioctl proxy-status'
 
+alias arauth='gcloud auth application-default print-access-token | helm registry login -u oauth2accesstoken --password-stdin https://europe-docker.pkg.dev'
+
+# https://unix.stackexchange.com/a/25329
+alias watch='watch '
+
 # View istio-proxy logs
 function proxylogs {
   stern $@ -c istio-proxy --exclude healthz --exclude kube-probe --exclude Prometheus --exclude InboundPassthroughClusterIpv4 -oraw | grep bytes_ | jq -S
