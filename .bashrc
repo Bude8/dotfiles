@@ -8,16 +8,6 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -39,29 +29,6 @@ fi
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-#
-# if [ -n "$force_color_prompt" ]; then
-#     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-# 	# We have color support; assume it's compliant with Ecma-48
-# 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-# 	# a case would tend to support setf rather than setaf.)
-# 	color_prompt=yes
-#     else
-# 	color_prompt=
-#     fi
-# fi
-#
-# if [ "$color_prompt" = yes ]; then
-#     PS1='✦\W\[\033[00m\]\$ '
-# else
-#     PS1='✦:\w\$ '
-# fi
-# unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 # case "$TERM" in
@@ -109,7 +76,24 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PROMPT_COMMAND='echo -en "\033]0; $(basename $PWD) \a"'
+HISTSIZE=9000
+HISTFILESIZE=$HISTSIZE
+HISTCONTROL=ignorespace:ignoredups
+
+_bash_history_sync() {
+    echo -en "\033]0; $(basename $PWD) \a"
+    builtin history -a         #1
+    HISTFILESIZE=$HISTSIZE     #2
+    builtin history -c         #3
+    builtin history -r         #4
+}
+
+history() {                  #5
+    _bash_history_sync
+    builtin history "$@"
+}
+
+PROMPT_COMMAND=_bash_history_sync
 
 export ASH_HOME=$HOME/ash/ash-2.0.2/bin
 export PATH="$ASH_HOME:$PATH"
@@ -344,3 +328,7 @@ source <(yq shell-completion bash)
 export PATH=$PATH:$HOME/.pulumi/bin
 
 export KUBECTL_EXTERNAL_DIFF="$HOME/bin/kdiff.sh"
+
+function refresh-secret {
+  kubectl annotate es "$1" force-sync=$(date +%s) --overwrite
+}
