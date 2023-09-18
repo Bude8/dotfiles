@@ -182,12 +182,12 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
-  __git_complete g _git
 fi
 
 # Git
 # `git lg` for compact git log
 alias g="git"
+__git_complete g _git
 alias gst='git status'
 alias gs='git switch'
 alias ga='git add'
