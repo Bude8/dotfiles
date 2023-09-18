@@ -262,15 +262,13 @@ eval $(ssh-agent)
 export EDITOR="nvim"
 export VIMRC='$HOME/.config/nvim/init.vim'
 source "$HOME/.cargo/env"
-source $HOME/.keychain/hlee-sh
 source <(kubectl completion bash)
-export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HOME/repos/DevOps/devops-scripts/kubernetes/scripts/:$HOME/repos/DevOps/devops-scripts/migration/helm-migration-scripts/:$HOME/repos/DevOps/devops-scripts/migration/flux-migration/:$HOME/.local/bin:$PATH:$HOME/repos/DevOps/k8s-gitops-dev/scripts/bin"
+export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HOME/repos/devops/devops-scripts/kubernetes/scripts/:$HOME/repos/devops/devops-scripts/migration/helm-migration-scripts/:$HOME/repos/devops/devops-scripts/migration/flux-migration/:$HOME/.local/bin:$PATH:$HOME/repos/devops/k8s-gitops-dev/scripts/bin"
 
 # Zscaler
 [[ -f "/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt" ]] && export SSL_CERT_FILE="/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt"
 
 . /usr/bin/z.sh
-/usr/bin/keychain --nogui ~/.ssh/id_rsa
 complete -F __start_kubectl k
 complete -F _complete_alias k
 
@@ -310,7 +308,6 @@ function diff-k8s-json {
         local expr='del(.items[].status, .items[].metadata.labels,  .items[].metadata.annotations, .items[].metadata.creationTimestamp, .items[].metadata.uid, .items[].metadata.resourceVersion, .items[].metadata.generation )'
         colordiff -u <(jq $expr $1) <(jq $expr $2)
 }
-. "$HOME/.cargo/env"
 
 export FZF_DEFAULT_COMMAND='fd --type f --color=never --hidden'
 export FZF_DEFAULT_OPTS='--no-height --color=bg+:#343d46,gutter:-1,pointer:#ff3c3c,info:#0dbc79,hl:#0dbc79,hl+:#23d18b'
