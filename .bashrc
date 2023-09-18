@@ -182,6 +182,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
+  __git_complete g _git
 fi
 
 # Git
@@ -200,7 +201,6 @@ alias gr='git restore'
 alias gfm='git pull'
 alias cdr='cd $(git rev-parse --show-toplevel)'
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-__git_complete g _git
 
 # PS1='[\u@\h \W $(kube_ps1)]\$ '
 # PS1='\W $(kube_ps1)\$ '
