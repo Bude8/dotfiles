@@ -184,6 +184,8 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
+source ~/.bash_completion.d/complete_alias
+
 # Git
 # `git lg` for compact git log
 alias g="git"
@@ -271,6 +273,12 @@ export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HO
 . /usr/bin/z.sh
 complete -F __start_kubectl k
 complete -F _complete_alias k
+complete -F _complete_alias ka
+complete -F _complete_alias kd
+complete -F _complete_alias kg
+complete -F _complete_alias kl
+complete -F _complete_alias krew
+complete -F _complete_alias krm
 
 # Compare 2 objects of the same type e.g. kdiff pod <pod1> <pod2>
 function kdiff {
