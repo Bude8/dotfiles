@@ -4,4 +4,8 @@ if not present then
   return
 end
 
-require("bufferline").setup{}
+require("bufferline").setup{
+  options = {
+    buffer_close_icon = 'x',
+  }
+}
