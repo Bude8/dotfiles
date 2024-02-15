@@ -26,7 +26,7 @@ nvim_treesitter.setup {
   },
 }
 
-vim.api.nvim_command('autocmd BufNewFile,BufRead *.tfvars set filetype=tf')
+vim.api.nvim_command('autocmd BufNewFile,BufRead *.tfvars set filetype=terraform')
 
 -- nvim-ts-autotag
 require('nvim-ts-autotag').setup()
