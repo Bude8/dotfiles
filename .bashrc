@@ -76,28 +76,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-HISTSIZE=9000
-HISTFILESIZE=$HISTSIZE
-HISTCONTROL=ignorespace:ignoredups
+PROMPT_COMMAND='echo -en "\033]0; $(basename $PWD) \a"'
 
-_bash_history_sync() {
-    echo -en "\033]0; $(basename $PWD) \a"
-    builtin history -a         #1
-    HISTFILESIZE=$HISTSIZE     #2
-    builtin history -c         #3
-    builtin history -r         #4
-}
-
-history() {                  #5
-    _bash_history_sync
-    builtin history "$@"
-}
-
-PROMPT_COMMAND=_bash_history_sync
-
-export ASH_HOME=$HOME/ash/ash-2.0.2/bin
+export ASH_HOME=$HOME/bin/ash-2.3.2/bin
 export PATH="$ASH_HOME:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH=$PATH:"/mnt/c/Users/HenryLee/AppData/Local/Programs/Microsoft VS Code/bin"
 eval "$(starship init bash)"
 
 alias ll='ls -alF'
@@ -161,7 +145,7 @@ function restart-deploy {
 
 # Replace all string matches inside dir e.g. replace "version: 1.0.0" "version: 2.0.0"
 function replace {
-    grep --exclude-dir=".git;.svn" -rl "$1"| xargs sed -i "s/$1/$2/g"
+    rg "$1" -l | xargs sed -i "s/$1/$2/g"
 }
 
 function pretty-csv {
@@ -195,6 +179,7 @@ alias gs='git switch'
 alias ga='git add'
 alias gcm='git commit -m'
 alias gco='git checkout'
+complete -F _complete_alias gco
 alias gcod='git checkout origin/diff/$(git rev-parse --abbrev-ref HEAD)'
 alias gd='git diff'
 alias gdn='git diff --no-ext-diff'
@@ -223,7 +208,6 @@ alias ing='ingress'
 alias javaswap='sudo update-alternatives --config java'
 alias koff='kubeoff'
 alias kon='kubeon'
-alias kust='kustomize'
 alias nvimb='nvim ~/.bashrc'
 alias nvimi='nvim ~/.config/nvim/init.vim'
 alias sourceb='source ~/.bashrc'
@@ -254,7 +238,13 @@ alias validate="kubectl apply --validate=true --dry-run=client --filename"
 alias colordiff2="colordiff -yW`tput cols`"
 alias gke='gcloud container'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias kb='kustomize build'
+kb() {
+  if [ $# -eq 0 ]; then
+    kustomize build | bat -l yaml
+  else
+    kustomize build "$1" | bat -l yaml
+  fi
+}
 
 jlogs() {
   rainbow -y '(error|ERROR|Error).*' --red='(warn|WARN|Warn).*' --green='(info|INFO|Info).*' -m '(debug|DEBUG|Debug).*' --config=java-stack-trace
@@ -265,7 +255,7 @@ export EDITOR="nvim"
 export VIMRC='$HOME/.config/nvim/init.vim'
 source "$HOME/.cargo/env"
 source <(kubectl completion bash)
-export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HOME/repos/devops/devops-scripts/kubernetes/scripts/:$HOME/repos/devops/devops-scripts/migration/helm-migration-scripts/:$HOME/repos/devops/devops-scripts/migration/flux-migration/:$HOME/.local/bin:$PATH:$HOME/repos/devops/k8s-gitops-dev/scripts/bin"
+export PATH="$HOME/bin:$HOME/install4j9.0.6/bin:$HOME/apache-maven-3.6.3/bin:$HOME/repos/devops/devops-scripts/kubernetes/scripts/:$HOME/repos/devops/devops-scripts/migration/helm-migration-scripts/:$HOME/repos/devops/devops-scripts/migration/flux-migration/:$HOME/.local/bin:$PATH:$HOME/repos/devops/k8s-gitops-dev/scripts/bin:$HOME/bin/adr-tools-3.0.0/src"
 
 # Zscaler
 [[ -f "/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt" ]] && export SSL_CERT_FILE="/usr/local/share/ca-certificates/extra/ZscalerRootCertificate-2048-SHA256.crt"
@@ -299,13 +289,13 @@ if [ -f '/home/henry/google-cloud-sdk/completion.bash.inc' ]; then . '/home/henr
 function rep-health {
     local pod="$(kubectl get pod -oname | grep $1 | head -1)"
     echo "Health check for $pod"
-    kubectl exec -it "$pod" -- curl localhost:8080/rep/v1/health -- | jq  '.[] | select (.status |contains ("CRITICAL", "WARNING"))'
+    kubectl exec -it "$pod" -- curl 'localhost:8080/rep/v1/health?details=true' -- | jq  '.[] | select (.status |contains ("CRITICAL", "WARNING"))'
 }
 
 function pod-health {
     local pod="$(kubectl get pod -oname | grep $1 | head -1)"
     echo "Health check for $pod"
-    kubectl exec -it "$pod" -- curl localhost:8080/rep/v1/health -- | jq  '.'
+    kubectl exec -it "$pod" -- curl 'localhost:8080/rep/v1/health?details=true' -- | jq  '.'
 }
 
 # Use bash-completion, if available
@@ -334,6 +324,12 @@ export PATH=$PATH:$HOME/.pulumi/bin
 
 export KUBECTL_EXTERNAL_DIFF="$HOME/bin/kdiff.sh"
 
+
+source <(velero completion bash)
+
 function refresh-secret {
   kubectl annotate es "$1" force-sync=$(date +%s) --overwrite
 }
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash --disable-up-arrow)"
